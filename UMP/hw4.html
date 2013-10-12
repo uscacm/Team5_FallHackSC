@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Homework 4 - Janice Leung</title>
+
+<script type="text/javascript">
+
+var URL;
+
+function findHeading(book, heading) {
+    var k = 0;
+    for (k = 0; k < book.length; k++) {
+        if (book.item(k).nodeName == heading) {
+            return k;
+        }
+    }
+    return -1;
+}
+
+function generateHTML(xmlDoc) {
+    ELEMENT_NODE = 1;
+    root = xmlDoc.DocumentElement;
+
+    htmlText = "<html><head><title>XML Parser Results</title></head><body>";
+
+    books = xmlDoc.getElementsByTagName("book");
+    if (books.length == 0) {
+        htmlText += "<p>No books.</p>";
+        return;
+    }
+
+    htmlText += "<table border='2'>";
+
+    nodeLabels = books.item(0).childNodes;
+
+    for (i = 0; i < books.length; i++) {
+        if (books.item(i).childNodes.length > nodeLabels.length) {
+            nodeLabels = books.item(i).childNodes;
+        }
+    }
+
+    htmlText += "<tbody><tr>"
+
+    for (i = 0; i < nodeLabels.length; i++) {
+        header = nodeLabels.item(i).nodeName;
+        if (nodeLabels.item(i).nodeType == ELEMENT_NODE) {
+            htmlText += "<th>" + header + "</th>";
+        }
+    }
+
+    htmlText += "</tr>"; //End of heading row
+
+    for (i = 0; i < books.length; i++) {
+        htmlText += "<tr>";
+        book = books.item(i).childNodes;
+        for (j = 0; j < nodeLabels.length; j++) {
+            if (nodeLabels.item(j).nodeType == ELEMENT_NODE) {
+                detailNum = findHeading(book, nodeLabels.item(j).nodeName);
+                if (detailNum > -1) {
+                    detailType = book.item(detailNum).nodeName;
+                    detail = book.item(detailNum).firstChild.nodeValue;
+                    if (detailType == "image") {
+                        if (detail.substring(0, 7) == "http://") {
+                            htmlText += "<td><img src='" + detail + "' width='250px' /></td>";
+                        } else {
+                            if (URL.substring(0, 7) == "http://") {
+                                lastSlash = URL.lastIndexOf("/");
+                                picturePath = URL.substring(0, lastSlash + 1) + detail;
+                                htmlText += "<td><img src='" + picturePath + "' width='250px' /></td>";
+                            } else {
+                                htmlText += "<td><img src='" + detail + "' width='250px' /></td>";
+                            }
+                        }
+                        
+                    } else {
+                        htmlText += "<td>" + detail + "</td>";
+                    }
+                } else {
+                    htmlText += "<td>-- NO " + nodeLabels.item(j).nodeName + " provided. --</td>";
+                }
+            }
+        }
+        htmlText += "</tr>";
+    }
+    htmlText += "</tbody></table>";
+}
+
+function loadXML(url) {
+    if (window.XMLHttpRequest) {
+        // For modern browsers. 
+        xmlhttp = new XMLHttpRequest();
+    } else {
+        // IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.open("GET", url, false);
+    xmlhttp.send();
+
+    xmldoc = xmlhttp.responseXML;
+    return xmldoc;
+}
+
+function viewXML(form) {
+    URL = form.URL.value;
+    if (URL == "") {
+        window.alert("Error: Please input a XML file URL.");
+        return;
+    }
+
+    xmlDoc = loadXML(URL);
+
+    if (!xmlDoc) {
+        window.alert("Error: 404. File Not Found. ");
+        return;
+    }
+
+    if (window.ActiveXObject) { //IE is async
+        if (xmlDoc.parseError.errorCode != 0) {
+            window.alert("Error: Invalid XML.");
+            return;
+        } else {
+            if (xmlDoc.getElementsByTagName("book").length <= 0) {
+                window.alert("Error: No Books in XML File. ");
+                return;
+            }
+
+            generateHTML(xmlDoc);
+            hwin = window.open("", "Homework 4", 
+                "scrollbars=1, height=800, width=1000");
+            hwin.document.write(htmlText);
+        }
+    } else { //Everything else. 
+        if (xmlDoc.documentElement.nodeName == "parsererror") {
+            errorDetails = xmlDoc.documentElement.childNodes[0].nodeValue;
+            errorDetails = errorDetails.replace(/</g, "&lt;");
+            window.alert("Error: Invalid XML.</br>" + errorDetails);
+            return;
+        } else {
+            xmlDoc.onload = generateHTML(xmlDoc); 
+            if (xmlDoc.getElementsByTagName("book").length <= 0) {
+                window.alert("Error: No Books in XML File. ");
+                return;
+            }
+            hwin = window.open("", "Homework 4", 
+                "scrollbars=1, height=800, width=1000");
+            hwin.document.write(htmlText);
+            hwin.document.write("</bo" + "dy></html>");
+        }
+    }
+    hwin.document.close();
+}
+
+function keyboardSubmit(e) {
+    if (e.which == 13 || e.keyCode == 13) {
+        var form = document.getElementById("location");
+        viewXML(form);
+        return false;
+    }
+    return true;
+}
+
+</script>
+
+</head>
+
+<body style="text-align: center;">
+
+<p>Enter url for file: </p>
+<form name="xmlForm" id="location">
+    <input type="text" name="URL" maxlength="255" size="100" 
+        onkeypress="keyboardSubmit(event)" />
+    <br />
+    <input type="button" name="submit" value="Submit Query" 
+        onClick="viewXML(this.form)" />
+</form>
+
+<NOSCRIPT>
+</body>
+
+</html>
