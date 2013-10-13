@@ -20,13 +20,13 @@ require 'facebook-php-sdk/src/facebook.php';
 	))
 	
 //	$facebook->setAccessToken('YOUR_APP_ACCESS_TOKEN');
-// 	$facebook->setAccessToken( GET /oauth/access_token?
-//      client_id={app-id}
-//     &client_secret={app-secret}
-//     &grant_type=client_credentials
-//     );
-	$access_token = $facebook->getAccessToken();
-	$facebook->setAccessToken($access_token);
+	
+	GET https://graph.facebook.com/oauth/access_token?
+            client_id=527604157314617
+           &client_secret=19b439de10fa61a270135ff08e873cf4
+           &grant_type=client_credentials
+           
+	$facebook->setAccessToken();
 	
 // make SURE that the uid (Event ID) is a STRING not an INT
 	$fql = "SELECT 
