@@ -11,81 +11,71 @@
         </head>
         <body>
             <div class="container">
-                <h1>  <a href="#">SUPER USC EVENTS CALENDAR </a> </hl>
-                
-                <div class="navbar">
-                    <div class="navbar-inner">
-                        <div class="container">
-                            <ul class="nav">
-                                <li><a href="index.php">Home</a></li>
-                                <li><a href="about.php">About</a></li>
-                                <li class="active"><a href="#">Add Your Event</a></li>
-                                <li><a href="contact.php">Contact</a></li>
-                            </ul>
-                        </div>
+            <h1> <img src="img/site_banner.png" alt="SUPER USC EVENTS CALENDAR"> </hl>
+
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <ul class="nav">
+                            <li><a href="index.php">Home</a></li>
+                            <li><a href="about.php">About</a></li>
+                            <li class="active"><a href="#">Add Your Event</a></li>
+                            <li><a href="contact.php">Contact</a></li>
+                        </ul>
                     </div>
                 </div>
-    
-                <div class="hero-unit">
-                    <h2>Add an Event to the Calendar </h2>
-                    <p>Insert Content here</p>
+            </div>
+       
+        
+                <div class="container" >
+                <form class="form-horizontal" name="register" method='post' action='register.php'>
+		<fieldset>
+			<legend>Add Event Form</legend>
+			<div class="control-group">
+				<label class="control-label">Organization:</label>
+				<div class="controls">
+					<input type="text" id="org_name" name="org_name">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Event</label>
+				<div class="controls">
+					<input type="text" id="event_name" name="event_name">
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Location:</label>
+				<div class="controls">
+					<input type="text" id="location" name="location">
+				</div>
+			</div>
+                        <div class="control-group">
+				<label class="control-label">USC Email</label>
+				<div class="controls">
+					<input type="text" id="usc_email" name="usc_email">
+				</div>
+			</div>
+                        
+                                                
+			<div class="control-group">
+				<label class="control-label">Description</label>
+				<div class="controls">
+					<input type="text" id="description" name="description">
+				</div>
+			</div>
                     
-                    <form class="form-horizontal" method="post" action="http://www.usc.edu/cgi-bin/mail_form/liangvic@usc.edu">                        
-                        <div class="form-group">  
-                            <label for="org_name" class="col-lg-2 control-label">Organization</label>  
-                            <div class="col-lg-10">  
-                              <input type="text" class="form-control" id="org_name" placeholder="UCS SuperStars">  
-                            </div>  
-                        </div>
-                         
-                        <div class="form-group">  
-                          <label for="event_name" class="col-lg-2 control-label">Event Name</label>  
-                          <div class="col-lg-10">  
-                            <input type="text" class="form-control" id="event_name" placeholder="Apple Bobbing Under the Stars">  
-                          </div>  
-                        </div>
-                        
-                        <div class="form-group input-append bootstrap-timepicker">
-                            <label for="start_time" class="col-lg-2 control-label">Start Time</label>
-                            <div class="col-lg-10">
-                                <input id="timepicker1" type="text" class="input-small form-control">
-                                <span class="add-on"><i class="icon-time"></i></span>
-                            </div>
-                        </div>
-                        </br>
-                        <div class="form-group input-append bootstrap-timepicker">
-                            <label for="end_time" class="control-label">End Time</label>
-                            <div class="col-lg-10">
-                                <input id="timepicker2" type="text" class="input-small form-control">
-                                <span class="add-on"><i class="icon-time"></i></span>
-                            </div>
-                        </div>
-                 
-                        <script type="text/javascript">
-                            $('#timepicker1').timepicker('setTime', '6:00 PM');
-                            $('#timepicker2').timepicker('setTime', '8:00 PM');
-                        </script>
-                                         
-                        <div class="form-group">  
-                          <label for="desc" class="col-lg-2 control-label">Event Description</br>(200 chars max)</label>
-                          <div class="col-lg-10">  
-                            <textarea rows="5" cols="50" placeholder="Come join us for Apple Bobbing!"></textarea>  
-                          </div>  
-                        </div>  
-                        
-                        
-                        
-                        <div class="form-group col-lg-offset-10 col-lg-4">  
-                            <button type="submit" value="submit" class="btn btn-default">Submit</button>                  
-                        </div>
-                        
-                    </form>
-                    
-                    
+			<div class="control-group">
+				<label class="control-label"></label>
+				<div class="controls">
+					<button type="submit" class="btn btn-success" value="register">Submit</button>
+				</div>
+                    	</div>
+                </fieldset>                 
+                </form>
+                
+                
                 </div>
-                
-                
-                
+                </div>                
             </div>
                         
         </body>

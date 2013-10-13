@@ -10,134 +10,28 @@
         </head>
         <body>
             <div class="container">
-                <h1>  <a href="#">SUPER USC EVENTS CALENDAR </a> </hl>
-                
-                <div class="navbar">
-                    <div class="navbar-inner">
-                        <div class="container">
-                            <ul class="nav">
-                                <li class="active"><a href="#">Home</a></li>
-                                <li><a href="about.php">About</a></li>
-                                <li><a href="addyourevent.php">Add Your Event</a></li>
-                                <li><a href="contact.php">Contact</a></li>
-                            </ul>
-                        </div>
+            <h1> <img src="img/site_banner.png" alt="SUPER USC EVENTS CALENDAR"> </hl>
+            
+            <div class="navbar">
+                <div class="navbar-inner">
+                    <div class="container">
+                        <ul class="nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a href="about.php">About</a></li>
+                            <li><a href="addyourevent.php">Add Your Event</a></li>
+                            <li><a href="contact.php">Contact</a></li>
+                        </ul>
                     </div>
                 </div>
+            </div>
+
+             <?php
+             include("filters.php");
+             ?>
                 
-                <div class="panel-group" id="accordion">
-                    <div class="panel panel-default">
-                      <div class="panel-heading">
-                        <h4 class="panel-title">            
-                          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                            Filters
-                          </a>
-                        </h4>
-                      </div>
-                      <div id="collapseOne" class="panel-collapse collapse in">
-                        <div class="panel-body">
-                          <label class="checkbox inline">
-                            <input type="checkbox" id="academic" value="option1"> 1
-                          </label>
-                          <label class="checkbox inline">
-                            <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
-                          </label>
-                          <label class="checkbox inline">
-                            <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
-                          </label>
-                          <label class="checkbox inline">
-                            <input type="checkbox" id="inlineCheckbox4" value="option4"> 1
-                          </label>
-                          <label class="checkbox inline">
-                            <input type="checkbox" id="inlineCheckbox5" value="option2"> 2
-                          </label>
-                          <label class="checkbox inline">
-                            <input type="checkbox" id="inlineCheckbox6" value="option3"> 3                           
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                
-                <script>
-    $(function(){
-      $("#filters").load("filters.html");
-    });
-    </script>
-                
-                <div class="row" data-spy="scroll">
-                    <div class="span11">
-                        <div class="calendar">
-                            <table class="table table-bordered">
-                                <thead>  
-                                    <tr>
-                                        <caption>CALENDAR</caption>
-                                        <th>Time</th>
-                                        <th>SUN</th>  
-                                        <th>MON</th>  
-                                        <th>TUES</th>  
-                                        <th>WED</th>
-                                        <th>THUR</th>
-                                        <th>FRI</th>
-                                        <th>SAT</th>
-                                    </tr>
-                                </thead>
-                             <tbody>
-                                <tr>
-                                  <td>test</td>
-                                  <td>test</td>
-                                </tr>
-                              </tbody>
-                             <tr>
-                                  <td>test</td>
-                                  <td>test</td>
-                                </tr>
-                              </tbody>
-                             <tr>
-                                  <td>test</td>
-                                  <td>test</td>
-                                </tr>
-                              </tbody>
-                             <tr>
-                                  <td>test</td>
-                                  <td>test</td>
-                                </tr>
-                              </tbody>
-                             <tr>
-                                  <td>test</td>
-                                  <td>test</td>
-                                </tr>
-                              </tbody>
-                             <tr>
-                                  <td>test</td>
-                                  <td>test</td>
-                                </tr>
-                              </tbody>
-                             <tr>
-                                  <td>test</td>
-                                  <td>test</td>
-                                </tr>
-                              </tbody>
-                             <tr>
-                                  <td>test</td>
-                                  <td>test</td>
-                                </tr>
-                              </tbody>
-                             <tr>
-                                  <td>test</td>
-                                  <td>test</td>
-                                </tr>
-                              </tbody>
-                             <tr>
-                                  <td>test</td>
-                                  <td>test</td>
-                                </tr>
-                              </tbody>
-                             
-                             
-                            </table>
-                        </div>
-                    </div>
+            <?php
+             include("calendar.php");
+             ?>
                     
                     <div class="span3">
                         <div class="selected-events">
