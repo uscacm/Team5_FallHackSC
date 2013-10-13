@@ -1,0 +1,38 @@
+@import url("bootstrap.min.css");
+@import url("bootstrap-timepicker.min.css");
+.container{
+    width: 1100px;
+}
+.calendar{
+    background-color: #e3e3e3;
+    padding: 10px;
+}
+.info{
+    background-color: #e3e3e3;
+    padding: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    
+}
+
+#accordion{
+    margin-bottom: 10px;
+    background-color: #e3e3e3;
+    padding: 5px 10px 10px 10px;
+}
+
+th {
+    width: 250px;
+    background-color: #428bca;  
+    color: white;  
+    font-size: 24px;
+    text-align: center;
+}
+.table {
+    color:white;
+}
+
+.hero-unit {
+    padding-top: 20px;
+    
+}

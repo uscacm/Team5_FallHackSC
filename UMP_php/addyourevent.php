@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
     <html>
         <head>
             <meta charset = "utf-8">
@@ -17,8 +17,8 @@
                     <div class="navbar-inner">
                         <div class="container">
                             <ul class="nav">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About</a></li>
+                                <li><a href="index.php">Home</a></li>
+                                <li><a href="about.php">About</a></li>
                                 <li class="active"><a href="#">Add Your Event</a></li>
                                 <li><a href="#">Contact</a></li>
                             </ul>
